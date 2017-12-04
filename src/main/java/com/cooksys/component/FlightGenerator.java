@@ -35,5 +35,13 @@ public class FlightGenerator {
 		}
 		return result;
 	}
+	
+	// TO DO
+public ArrayList<ArrayList<Flight>> generateNewTrips(String originCity, String destinationCity,  ArrayList<Flight> flightList) {
+		
+	return null;
+		
+		 
+	}
 
 }

@@ -6,8 +6,7 @@ public enum Cities {
 	
 	private String name;
 	
-	private Cities(String name)
-	{
+	private Cities(String name){
 		this.name = name;
 	}
 

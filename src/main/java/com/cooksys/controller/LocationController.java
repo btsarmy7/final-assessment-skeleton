@@ -17,8 +17,11 @@ import com.cooksys.service.LocationService;
 @CrossOrigin
 public class LocationController {
 	
-	@Autowired
 	private LocationService locationService;
+
+	public LocationController(LocationService locationService) {
+		this.locationService = locationService;
+	}
 
 	@RequestMapping
 	public List<Location> get() {
@@ -35,5 +38,7 @@ public class LocationController {
 	{
 		return locationService.get(cityName);
 	}
+	
+	
 
 }
