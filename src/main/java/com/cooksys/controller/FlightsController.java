@@ -23,7 +23,7 @@ import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
 @RestController
-@RequestMapping("flights")
+@RequestMapping("/flights")
 @CrossOrigin
 public class FlightsController {
 	

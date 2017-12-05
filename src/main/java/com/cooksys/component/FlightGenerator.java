@@ -12,7 +12,7 @@ import com.cooksys.pojo.Flight;
 public class FlightGenerator {
 
 	public ArrayList<Flight> generateNewFlightList() {
-		
+
 		ArrayList<Flight> result = new ArrayList<>();
 
 		for (int i = 0; i < 5; i++) {
@@ -35,13 +35,64 @@ public class FlightGenerator {
 		}
 		return result;
 	}
-	
-	// TO DO
-public ArrayList<ArrayList<Flight>> generateNewTrips(String originCity, String destinationCity,  ArrayList<Flight> flightList) {
-		
-	return null;
-		
-		 
+
+	public ArrayList<ArrayList<Flight>> generateNewTrips(String originCity, String destinationCity,
+			ArrayList<Flight> flightList) {
+
+		if (originCity == null || destinationCity == null)
+			return null;
+
+		ArrayList<ArrayList<Flight>> result = new ArrayList<>();
+
+		// look through list of flights
+		for (int i = 0; i < flightList.size(); i++) {
+
+			Flight flight1 = flightList.get(i);
+
+			if (flight1.getOrigin().equals(originCity)) { // check if flight starts from originCity
+
+				if (flight1.getDestination().equals(destinationCity)) {  // check if flight ends in the destinationCity
+					ArrayList<Flight> trip = new ArrayList<>(); // add flight to new list which will eventually contain all the possible combinations of flights
+					trip.add(flight1);
+					result.add(trip);
+				} else {
+					for (int j = 0; j < flightList.size(); j++) { // look through rest of the flights to find other combinations
+						if (j != i) {
+							Flight flight2 = flightList.get(j);
+
+							if (flight2.getOffset() > flight1.getOffset()
+									&& flight2.getOrigin().equals(flight1.getDestination())) {
+								if (flight2.getDestination().equals(destinationCity)) {
+									ArrayList<Flight> trip = new ArrayList<>();
+									trip.add(flight1);
+									trip.add(flight2);
+									result.add(trip);
+								} else {
+									for (int k = 0; k < flightList.size(); k++) {
+										if (k != i & k != j) {
+											Flight flight3 = flightList.get(k);
+											if (flight3.getOffset() > flight2.getOffset()
+													&& flight3.getOrigin().equals(flight2.getDestination())
+													&& !flight2.getOrigin().equals(flight1.getOrigin())) {
+												if (flight3.getDestination().equals(destinationCity)) {
+													ArrayList<Flight> trip = new ArrayList<>();
+													trip.add(flight1);
+													trip.add(flight2);
+													trip.add(flight3);
+													result.add(trip);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return result;
+
 	}
 
 }

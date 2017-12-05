@@ -13,7 +13,7 @@ import com.cooksys.entity.Location;
 import com.cooksys.service.LocationService;
 
 @RestController
-@RequestMapping("location")
+@RequestMapping("/location")
 @CrossOrigin
 public class LocationController {
 	

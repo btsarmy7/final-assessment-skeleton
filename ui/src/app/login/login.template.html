@@ -1,0 +1,27 @@
+<div class="loginBox">
+  <div class="boxTitle"> Login </div>
+
+  <div class="boxBody" >
+          <div> Username </div>
+          <input autofocus
+                  type="text"
+                  class="boxInput"
+                  ng-style="{'border-color': $loginCtrl.usernameErrorCss }"
+                  ng-model="$loginCtrl.userInfo.username">
+
+          <div> Password </div>
+          <input ng-keyup="$event.keyCode == 13 && $loginCtrl.login()"
+                  type="password"
+                  class="boxInput"
+                  ng-style="{'border-color': $loginCtrl.passwordErrorCss }"
+                  ng-model="$loginCtrl.userInfo.password">
+  </div>
+
+  <div class="boxFooter" >
+      <button class="boxButton" ng-click="$loginCtrl.login()"> Log in </button>
+  </div>
+  <div>
+  <button class="switch" ui-sref="title.newuser"> Sign Up (then log in) </button>
+  </div>
+</div>
+  

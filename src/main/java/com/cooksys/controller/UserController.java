@@ -14,7 +14,7 @@ import com.cooksys.exception.FlightBookingException;
 import com.cooksys.service.UserService;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 @CrossOrigin
 public class UserController {
 

@@ -1,0 +1,136 @@
+/* Sets the orientation and background of the title page */
+.title {
+    display: flex;
+    flex-direction: column;
+    
+    background-position: center;
+    height: 80vh;
+}
+
+
+/* Styles the title banner's text */
+.titleBanner {
+    font-size: 50px;
+    text-align: left;
+    
+    color: green;
+    margin-top: 1vh;
+}
+
+
+/* Sets the orientation of the login/newuser boxes */
+.titleView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+
+/* Styles the login/newuser boxes */
+.loginBox,
+.newuserBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1vh;
+    padding-bottom: 2vh;
+}
+
+/* Styles the title of the box */
+.boxTitle {
+    font-size: 40px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    color: limegreen;
+}
+
+/* Styles the body of the box */
+.boxBody {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+    font-size: 25px;
+
+    border-top: 3px solid coral;
+    border-bottom: 1px solid coral;
+
+    min-width: 350px;
+    min-height: 20vh;
+    
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+
+}
+
+/* Styles the box input fields */
+.boxInput {
+    text-align: center;
+    font-size: large;
+    color: dimgray;
+    
+    border-width: 1px 1px 1px 1px;
+    border: 1px solid white;
+    
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    cursor: pointer;
+}
+
+/* Styles the footer of the box */
+.boxFooter {
+    display: flex;
+    justify-content: center;
+    
+    min-width: 350px;
+    
+    border-width: 1px 1px 1px 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Styles the userInfo buttons at the bottom of the box */
+.boxButton {
+    font-size: 20px;
+    color: white;
+    background: lightskyblue;
+    
+    min-width: 350px;
+  
+    border-width: 1px 1px 1px 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    cursor: pointer;
+}
+
+.switch {
+  font-size: 20px;
+  color: white;
+  background: #FF8C00;
+  
+  min-width: 350px;
+   
+  border-width: 1px 1px 1px 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
