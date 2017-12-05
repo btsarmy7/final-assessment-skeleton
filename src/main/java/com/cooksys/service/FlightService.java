@@ -37,7 +37,7 @@ public class FlightService {
 
 	private UserRepository userRepository;
 
-	public FlightService(FlightGenerator generator, UserRepository userRepository, TripRepository tripJpaRepository,
+	public FlightService(FlightGenerator generator, UserRepository userRepository, TripRepository tripRepository,
 			TripMapper tripMapper) {
 
 		this.generator = generator;
@@ -53,7 +53,7 @@ public class FlightService {
 
 	// The fixedDelay parameter determines how often a new day is generated as
 	// expressed in milliseconds
-	@Scheduled(fixedDelay = 10000)
+	@Scheduled(fixedDelay = 20000)
 	private void refreshFlights() {
 		flightList = generator.generateNewFlightList();
 		refreshTrips();

@@ -60,19 +60,19 @@ public class FlightGenerator {
 						if (j != i) {
 							Flight flight2 = flightList.get(j);
 
-							if (flight2.getOffset() > flight1.getOffset()
-									&& flight2.getOrigin().equals(flight1.getDestination())) {
-								if (flight2.getDestination().equals(destinationCity)) {
+							if (flight2.getOffset() > flight1.getOffset() // if flight2 takes off after flight1
+									&& flight2.getOrigin().equals(flight1.getDestination())) { // and flight1 ends where flight2 takes off (a possible transfer) 
+								if (flight2.getDestination().equals(destinationCity)) { // if only one transfer is needed to reach destination, add to list
 									ArrayList<Flight> trip = new ArrayList<>();
 									trip.add(flight1);
 									trip.add(flight2);
 									result.add(trip);
 								} else {
-									for (int k = 0; k < flightList.size(); k++) {
+									for (int k = 0; k < flightList.size(); k++) { // look through remaining flights
 										if (k != i & k != j) {
 											Flight flight3 = flightList.get(k);
 											if (flight3.getOffset() > flight2.getOffset()
-													&& flight3.getOrigin().equals(flight2.getDestination())
+													&& flight3.getOrigin().equals(flight2.getDestination()) // second transfer
 													&& !flight2.getOrigin().equals(flight1.getOrigin())) {
 												if (flight3.getDestination().equals(destinationCity)) {
 													ArrayList<Flight> trip = new ArrayList<>();

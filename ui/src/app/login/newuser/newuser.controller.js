@@ -1,26 +1,25 @@
-import templateUrl from './newuser.template.html'
-
-const controller = class NewuserController {
-    constructor(newuserService, $state) {
-            '@ngInject'
+/* @ngInject */
+class NewuserController {
+    
+        submission = {
+            username: '',
+            password: ''
+        }
+    
+        usernameErrorCss = "black"
+        passwordErrorCss = "black"
+    
+        constructor(newuserService, $state) {
             this.newuserService = newuserService
             this.$state = $state
-            userInfo = {
-                username: '',
-                password: ''
-            }
-        
-            usernameErrorCss = "black"
-            passwordErrorCss = "black"
-
         }
     
         createNewUser() {
             let user = {
-                credentials: this.userInfo
+                credentials: this.submission
             }
     
-            this.newuserService.createNewUser(user).then((succeessResponse) => {
+            this.newuserService.createNewUser(user).then((succeedResponse) => {
                 this.$state.go('title.login')
             }, (errorResponse) => {
                 if (errorResponse.status === 409) {
@@ -38,9 +37,5 @@ const controller = class NewuserController {
             })
         }
     }
-
-export const newuserComponent = {
-  templateUrl,
-  controller,
-  controllerAs: 'newuserController'
-}
+    
+    export default NewuserController

@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,7 @@ import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("/flights/")
 @CrossOrigin
 public class FlightsController {
 	
@@ -48,12 +48,12 @@ public class FlightsController {
 		return flightService.getDailyFlightList();
 	}
 	
-	@GetMapping("/trips")
+	@GetMapping("/trips/")
 	public ArrayList<ArrayList<Flight>> getTripList(@RequestParam("origin") String origin, @RequestParam("destination") String destination) {
 		return flightService.getTripList(origin, destination);
 	}
 	
-	@GetMapping("/trips/@{username}")
+	@GetMapping("/trips/{username}")
 	public List<TripDto> getBookedTrips(@PathVariable String username, HttpServletResponse response) {
 		try {
 			return flightService.getBookedTrips(username);
@@ -63,7 +63,7 @@ public class FlightsController {
 		}
 	}
 	
-	@PostMapping("/trips/@{username}")
+	@PostMapping("/trips/{username}")
 	public void bookTrip(@RequestBody Trip tripInfo, @PathVariable String username, HttpServletResponse response) {
 		try {
 			flightService.bookTrip(tripInfo, username);

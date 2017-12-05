@@ -3,9 +3,11 @@ import apiUrl from './api.url'
 import appComponent from './app.component.js'
 
 // login stuff
-import title from './title/title.module.js'
-import titleLogin from './login/login.module.js'
-import titleNewuser from './newuser/newuser.module.js'
+import loginTitle from './login/title/title.module.js'
+import loginUserlogin from './login/userlogin/userlogin.module.js'
+import loginNewuser from './login/newuser/newuser.module.js'
+
+import userDataService from './userData/userDataService.js'
 
 export default
   angular
@@ -17,9 +19,10 @@ export default
       'ui.router',
 
       flightMap,
-      title,
-      titleLogin,
-      titleNewuser
+     
+      loginTitle,
+      loginUserlogin,
+      loginNewuser,
     ])
     .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
@@ -31,28 +34,31 @@ export default
         component: 'titleComponent'
       }
 
-      const loginState = {
-        name: 'title.login',
-        url: '/login',
-        component: 'loginComponent'
+      const userloginState = {
+        name: 'login.userlogin',
+        url: '/userlogin',
+        component: 'userLoginComponent'
       }
 
       const newuserState = {
-        name: 'title.newuser',
+        name: 'login.newuser',
         url: '/newuser',
         component: 'newuserComponent'
       }
     
       $stateProvider.state(titleState)
-      .state(loginState)
+      //.state(titleState)
+      .state(userloginState)
       .state(newuserState)
 
-      $urlRouterProvider.otherwise('/title/login')
+      $urlRouterProvider.otherwise('/title')
     }
   ])
     .constant('apiUrl', apiUrl)
     .component('flightApp', appComponent)
-
+    .component('appComponent', appComponent)
+    //.controller('appController', appController)
+    .service('userDataService', userDataService)
    
 
     .name

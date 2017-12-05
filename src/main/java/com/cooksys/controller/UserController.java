@@ -14,7 +14,7 @@ import com.cooksys.exception.FlightBookingException;
 import com.cooksys.service.UserService;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users/")
 @CrossOrigin
 public class UserController {
 
@@ -24,7 +24,7 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@PostMapping("/new")
+	@PostMapping("/new/")
 	public void postUser(@RequestBody UserInfoDto userInfoDto, HttpServletResponse response) {
 		try {
 			userService.postUser(userInfoDto);
@@ -33,7 +33,7 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/login/")
 	public void login(@RequestBody CredentialsDto credentials, HttpServletResponse response) {
 		try {
 			userService.login(credentials);
