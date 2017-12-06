@@ -1,4 +1,5 @@
 
+
 /* Sets the orientation and background of the title page */
 .title {
     display: flex;
@@ -14,7 +15,7 @@
     font-size: 50px;
     text-align: left;
     
-    color: green;
+    color: rgb(158, 24, 64);
     margin-top: 1vh;
 }
 
@@ -48,7 +49,7 @@
     font-size: 40px;
     padding-top: 1vh;
     padding-bottom: 1vh;
-    color: limegreen;
+    color: rgb(224, 122, 146);
 }
 
 /* Styles the body of the box */
@@ -62,8 +63,8 @@
     text-align: center;
     font-size: 25px;
 
-    border-top: 3px solid coral;
-    border-bottom: 1px solid coral;
+    border-top: 5px solid rgb(69, 158, 117);
+    border-bottom: 5px solid rgb(69, 158, 117);
 
     min-width: 350px;
     min-height: 20vh;
@@ -108,7 +109,7 @@
 .boxButton {
     font-size: 20px;
     color: white;
-    background: lightskyblue;
+    background: rgb(92, 73, 187);
     
     min-width: 350px;
   
@@ -124,7 +125,7 @@
 .switch {
   font-size: 20px;
   color: white;
-  background: #FF8C00;
+  background: rgb(60, 110, 167);
   
   min-width: 350px;
    

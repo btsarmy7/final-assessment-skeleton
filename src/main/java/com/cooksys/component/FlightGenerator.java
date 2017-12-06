@@ -36,13 +36,13 @@ public class FlightGenerator {
 		return result;
 	}
 
-	// TO DO
+	//Get combination of flights from origin to destination 
 	public ArrayList<ArrayList<Flight>> generateNewTrips(String originCity, String destinationCity,  ArrayList<Flight> flightList) {
 
 		if(originCity == null || destinationCity == null)
 			return null;
 
-		ArrayList<ArrayList<Flight>> result = new ArrayList<>();
+		ArrayList<ArrayList<Flight>> result = new ArrayList<>(); 
 
 		for( int i = 0; i < flightList.size(); i++ ) {
 

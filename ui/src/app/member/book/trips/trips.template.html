@@ -1,0 +1,40 @@
+<div class="tripsPanel">
+        <div class="tripPanelSearchbar">
+                From:
+                <div class="tripListBox">
+                        <select ng-click="$tripsCtrl.getTrips()" class="listBoxOption" 
+                        ng-model="$tripsCtrl.originSelection" size="4">
+                                <option value="Chattanooga" class="dropdownOption">Chattanooga</option>
+                                <option value="Knoxville" class="dropdownOption">Knoxville</option>
+                                <option value="Nashville" class="dropdownOption">Nashville</option>
+                                <option value="Memphis" class="dropdownOption">Memphis</option>
+                        </select>
+                </div>
+                To:
+                <div class="tripListBox">
+                        <select ng-click="$tripsCtrl.getTrips()" class="listBoxOption" 
+                        ng-model="$tripsCtrl.destinationSelection" size="4">
+                                <option value="Chattanooga" class="dropdownOption">Chattanooga</option>
+                                <option value="Knoxville" class="dropdownOption">Knoxville</option>
+                                <option value="Nashville" class="dropdownOption">Nashville</option>
+                                <option value="Memphis" class="dropdownOption">Memphis</option>
+                        </select>
+                </div>
+        </div>
+        <div class="tripButtons">
+                <div class="tripPanelItem" ng-repeat="trip in $tripsCtrl.tripList" ng-click="$tripsCtrl.bookTrip(trip)">
+                        <div class="flightWrapper" ng-repeat="flight in trip.flightOutput">
+                                <div class="flightInfoBox">
+                                        <div class="flightInfoItem flightInfoLocations"> {{ flight.origin }} </div>
+                                        <div class="flightInfoItem"> {{ flight.to }} </div>
+                                        <div class="flightInfoItem flightInfoLocations"> {{ flight.destination }} </div>
+                                        <div class="flightInfoItem"> {{ flight.flightTime }} {{ flight.hours }} </div>
+                                </div>
+                                <div class="layoverInfoBox" ng-repeat="layover in flight.layovers">
+                                        <div class="layoverInfoItem"> Layover </div>
+                                        <div class="layoverInfoItem"> {{ layover }} hour(s) </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+</div>

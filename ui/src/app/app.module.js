@@ -1,30 +1,33 @@
-import flightMap from './map/map.module'
-import apiUrl from './api.url'
+import title from './title/title.module.js'
+import titleLogin from './title/login/login.module.js'
+import titleNewuser from './title/newuser/newuser.module.js'
+
+import member from './member/member.module.js'
+import memberBook from './member/book/book.module.js'
+import memberHistory from './member/history/history.module.js'
+
 import appComponent from './app.component.js'
-
-// login stuff
-import loginTitle from './login/title/title.module.js'
-import loginUserlogin from './login/userlogin/userlogin.module.js'
-import loginNewuser from './login/newuser/newuser.module.js'
-
+import appController from './app.controller.js'
+import apiUrl from './api.url.js'
 import userDataService from './userData/userDataService.js'
 
 export default
-  angular
-    .module('flight', [
-      'ngAria',
-      'ngAnimate',
-      'ngMaterial',
-      'ngMessages',
-      'ui.router',
+angular
+  .module('flight', [
+    'ngAria',
+    'ngAnimate',
+    'ngMaterial',
+    'ngMessages',
+    'ui.router',
 
-      flightMap,
-     
-      loginTitle,
-      loginUserlogin,
-      loginNewuser,
-    ])
-    .config(['$stateProvider', '$urlRouterProvider',
+    title,
+    titleLogin,
+    titleNewuser,
+    member,
+    memberBook,
+    memberHistory
+  ])
+  .config(['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
 
       const titleState = {
@@ -34,33 +37,49 @@ export default
         component: 'titleComponent'
       }
 
-      const userloginState = {
-        name: 'login.userlogin',
-        url: '/userlogin',
-        component: 'userLoginComponent'
+      const loginState = {
+        name: 'title.login',
+        url: '/login',
+        component: 'loginComponent'
       }
 
       const newuserState = {
-        name: 'login.newuser',
+        name: 'title.newuser',
         url: '/newuser',
         component: 'newuserComponent'
       }
-    
-      $stateProvider.state(titleState)
-      //.state(titleState)
-      .state(userloginState)
-      .state(newuserState)
 
-      $urlRouterProvider.otherwise('/title')
+      const memberState = {
+        abstract: true,
+        name: 'member',
+        url: '/member',
+        component: 'memberComponent'
+      }
+
+      const bookState = {
+        name: 'member.book',
+        url: '/book',
+        component: 'bookComponent'
+      }
+
+      const historyState = {
+        name: 'member.history',
+        url: '/history',
+        component: 'historyComponent'
+      }
+
+      $stateProvider.state(titleState)
+        .state(loginState)
+        .state(newuserState)
+        .state(memberState)
+        .state(bookState)
+        .state(historyState)
+
+      $urlRouterProvider.otherwise('/title/login')
     }
   ])
-    .constant('apiUrl', apiUrl)
-    .component('flightApp', appComponent)
-    .component('appComponent', appComponent)
-    //.controller('appController', appController)
-    .service('userDataService', userDataService)
-   
-
-    .name
-
-    
+  .constant('apiUrl', apiUrl)
+  .component('appComponent', appComponent)
+  .controller('appController', appController)
+  .service('userDataService', userDataService)
+  .name

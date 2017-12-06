@@ -49,7 +49,7 @@ public class FlightsController {
 	public List<TripDto> getBookedTrips(@PathVariable String username, HttpServletResponse response) {
 		try {
 			return flightService.getBookedTrips(username);
-		} catch (FlightBookingException flight) {
+		} catch (FlightBookingException flt) {
 			response.setStatus(FlightBookingException.NOT_FOUND);
 			return null;
 		}
@@ -59,7 +59,7 @@ public class FlightsController {
 	public void bookTrip(@RequestBody Trip tripInfo, @PathVariable String username, HttpServletResponse response) {
 		try {
 			flightService.bookTrip(tripInfo, username);
-		} catch (FlightBookingException flight) {
+		} catch (FlightBookingException flt) {
 			response.setStatus(FlightBookingException.CONFLICT);
 		}
 	}
