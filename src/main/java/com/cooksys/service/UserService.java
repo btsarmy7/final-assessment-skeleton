@@ -4,26 +4,30 @@ import org.springframework.stereotype.Service;
 
 import com.cooksys.dto.CredentialsDto;
 import com.cooksys.dto.UserInfoDto;
-import com.cooksys.entity.User;
-import com.cooksys.entity.embeddable.Credentials;
+import com.cooksys.entity.UserEntity;
+import com.cooksys.entity.embeddable.CredentialsEmbeddable;
 import com.cooksys.exception.FlightBookingException;
 import com.cooksys.mapper.UserMapper;
-import com.cooksys.repository.UserRepository;
+import com.cooksys.repository.UserJpaRepository;
 
 @Service
 public class UserService {
 
-	private UserRepository userRepository;
+	private UserJpaRepository userJpaRepository;
 	
 	private UserMapper userMapper;
 	
-	public UserService(UserRepository userRepository, UserMapper userMapper) {
-		this.userRepository = userRepository;
+	public UserService(UserJpaRepository userJpaRepository, UserMapper userMapper) {
+		this.userJpaRepository = userJpaRepository;
 		this.userMapper = userMapper;
 	}
 	
+	public UserEntity pullUser(String username) {
+		return userJpaRepository.findByCredentialsUsername(username);
+	}
+	
 	public void login(CredentialsDto credentials) throws FlightBookingException {
-		User user = findUser(credentials.getUsername());
+		UserEntity user = pullUser(credentials.getUsername());
 		
 		if(user == null) {
 			throw new FlightBookingException();
@@ -33,21 +37,17 @@ public class UserService {
 			throw new FlightBookingException();
 		}
 	}
-	
-	public User findUser(String username) {
-		return userRepository.findByCredentialsUsername(username);
-	}
 
 	public void postUser(UserInfoDto userInfoDto) throws FlightBookingException {
-		User user = userMapper.fromUserInfoDto(userInfoDto);
-		Credentials credentials = user.getCredentials();
+		UserEntity user = userMapper.fromUserInfoDto(userInfoDto);
+		CredentialsEmbeddable credentials = user.getCredentials();
 		
 		if(credentials == null || credentials.getUsername() == null || credentials.getPassword() == null) {
 			throw new FlightBookingException();
 		}
 		
-		if(findUser(credentials.getUsername()) == null) {
-			userRepository.save(user);
+		if(pullUser(credentials.getUsername()) == null) {
+			userJpaRepository.save(user);
 		} else {
 			throw new FlightBookingException();
 		}

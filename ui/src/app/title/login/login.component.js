@@ -1,8 +1,8 @@
-import templateUrl from './userlogin.template.html'
+import templateUrl from './login.template.html'
 
 export default {
   templateUrl,
-  controller: 'userLoginController',
+  controller: 'loginController',
   controllerAs: '$loginCtrl',
   bindings: {
     submission: '='

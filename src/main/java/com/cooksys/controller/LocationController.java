@@ -38,7 +38,5 @@ public class LocationController {
 	{
 		return locationService.get(cityName);
 	}
-	
-	
 
 }

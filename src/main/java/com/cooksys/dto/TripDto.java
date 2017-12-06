@@ -5,19 +5,17 @@ import java.util.List;
 
 public class TripDto {
 
-	private String username;
-	
 	private List<String> origins = new ArrayList<>();
 	
 	private List<String> destinations = new ArrayList<>();
 
-	private List<Double> flightTimes = new ArrayList<>();
+	private List<Long> flightTimes = new ArrayList<>();
 
-	private List<Double> layoverTimes = new ArrayList<>();
+	private List<Long> layoverTimes = new ArrayList<>();
 	
+	private String username;
 
 	public TripDto() {
-		
 	}
 
 	public List<String> getOrigins() {
@@ -36,19 +34,19 @@ public class TripDto {
 		this.destinations = destinations;
 	}
 
-	public List<Double> getFlightTimes() {
+	public List<Long> getFlightTimes() {
 		return flightTimes;
 	}
 
-	public void setFlightTimes(List<Double> flightTimes) {
+	public void setFlightTimes(List<Long> flightTimes) {
 		this.flightTimes = flightTimes;
 	}
 
-	public List<Double> getLayoverTimes() {
+	public List<Long> getLayoverTimes() {
 		return layoverTimes;
 	}
 
-	public void setLayoverTimes(List<Double> layoverTimes) {
+	public void setLayoverTimes(List<Long> layoverTimes) {
 		this.layoverTimes = layoverTimes;
 	}
 

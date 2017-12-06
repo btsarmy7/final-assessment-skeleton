@@ -23,13 +23,13 @@ public class Trip {
 	private List<String> destinations = new ArrayList<>();
 
 	@ElementCollection
-	private List<Double> flightTimes = new ArrayList<>();
+	private List<Long> flightTimes = new ArrayList<>();
 
 	@ElementCollection
-	private List<Double> layoverTimes = new ArrayList<>();
+	private List<Long> layoverTimes = new ArrayList<>();
 	
 	@ManyToOne
-	private User user;
+	private UserEntity user;
 
 	public Trip() {
 	}
@@ -59,27 +59,27 @@ public class Trip {
 		this.destinations = destinations;
 	}
 
-	public List<Double> getFlightTimes() {
+	public List<Long> getFlightTimes() {
 		return flightTimes;
 	}
 
-	public void setFlightTimes(ArrayList<Double> flightTimes) {
+	public void setFlightTimes(ArrayList<Long> flightTimes) {
 		this.flightTimes = flightTimes;
 	}
 
-	public List<Double> getLayoverTimes() {
+	public List<Long> getLayoverTimes() {
 		return layoverTimes;
 	}
 
-	public void setLayoverTimes(ArrayList<Double> layoverTimes) {
+	public void setLayoverTimes(ArrayList<Long> layoverTimes) {
 		this.layoverTimes = layoverTimes;
 	}
 
-	public User getUser() {
+	public UserEntity getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserEntity user) {
 		this.user = user;
 	}
 	

@@ -8,11 +8,10 @@ public class UserInfoDto {
 
 	private CredentialsDto credentials;
 
-	public UserInfoDto() {
-		
-	}
+	public UserInfoDto() { }
 
 	public UserInfoDto(CredentialsDto credentials) {
+		this();
 		this.credentials = credentials;
 	}
 

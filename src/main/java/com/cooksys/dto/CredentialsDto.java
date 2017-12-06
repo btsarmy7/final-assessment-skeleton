@@ -7,11 +7,10 @@ public class CredentialsDto {
 	
 	private String password;
 	
-	public CredentialsDto() {
-		
-	}
+	public CredentialsDto() { }
 
 	public CredentialsDto(String username, String password) {
+		this();
 		this.username = username;
 		this.password = password;
 	}

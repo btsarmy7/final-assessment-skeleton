@@ -35,4 +35,6 @@ public class FlightApplication {
 	public UiConfiguration uiConfiguration() {
 		return new UiConfiguration(null, new String[] { "get", "post", "put", "delete", "patch", "options", "head" });
 	}
+
 }
+

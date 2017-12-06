@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cooksys.pojo.Flight;
 import com.cooksys.dto.TripDto;
 import com.cooksys.entity.Trip;
 import com.cooksys.exception.FlightBookingException;
-import com.cooksys.pojo.Flight;
 import com.cooksys.service.FlightService;
 import com.cooksys.service.LocationService;
 
@@ -27,7 +26,6 @@ import com.cooksys.service.LocationService;
 @CrossOrigin
 public class FlightsController {
 	
-
 	LocationService locationService;
 	
 	FlightService flightService;
@@ -36,12 +34,6 @@ public class FlightsController {
 		this.locationService = locationService;
 		this.flightService = flightService;
 	}
-	
-	/*@RequestMapping
-	public ArrayList<Flight> getFlightList()
-	{
-		return flightService.getDailyFlightList();
-	}*/
 	
 	@GetMapping
 	public ArrayList<Flight> getFlightList() {
@@ -58,7 +50,7 @@ public class FlightsController {
 		try {
 			return flightService.getBookedTrips(username);
 		} catch (FlightBookingException flight) {
-			response.setStatus(flight.NOT_FOUND);
+			response.setStatus(FlightBookingException.NOT_FOUND);
 			return null;
 		}
 	}
@@ -68,10 +60,8 @@ public class FlightsController {
 		try {
 			flightService.bookTrip(tripInfo, username);
 		} catch (FlightBookingException flight) {
-			response.setStatus(flight.NOT_FOUND);
+			response.setStatus(FlightBookingException.CONFLICT);
 		}
 	}
 	
 }
-
-

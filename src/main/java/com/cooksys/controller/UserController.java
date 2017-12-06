@@ -17,7 +17,7 @@ import com.cooksys.service.UserService;
 @RequestMapping("/users/")
 @CrossOrigin
 public class UserController {
-
+	
 	private UserService userService;
 
 	public UserController(UserService userService) {
@@ -28,8 +28,8 @@ public class UserController {
 	public void postUser(@RequestBody UserInfoDto userInfoDto, HttpServletResponse response) {
 		try {
 			userService.postUser(userInfoDto);
-		} catch (FlightBookingException flight) {
-			response.setStatus(flight.NOT_ACCEPTABLE);
+		} catch (FlightBookingException flt) {
+			response.setStatus(FlightBookingException.NOT_ACCEPTABLE);
 		}
 	}
 	
@@ -37,8 +37,8 @@ public class UserController {
 	public void login(@RequestBody CredentialsDto credentials, HttpServletResponse response) {
 		try {
 			userService.login(credentials);
-		} catch (FlightBookingException flight) {
-			response.setStatus(flight.NOT_FOUND);
+		} catch (FlightBookingException flt) {
+			response.setStatus(FlightBookingException.NOT_AUTHORIZED);
 		}
 	}
 	

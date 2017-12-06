@@ -4,13 +4,13 @@ package com.cooksys.mapper;
 import org.mapstruct.Mapper;
 
 import com.cooksys.dto.CredentialsDto;
-import com.cooksys.entity.embeddable.Credentials;
+import com.cooksys.entity.embeddable.CredentialsEmbeddable;
 
 @Mapper(componentModel="spring")
 public interface CredentialsMapper {
 
-	Credentials fromCredentialsDto(CredentialsDto credentialsDto);
+	CredentialsEmbeddable fromCredentialsDto(CredentialsDto credentialsDto);
 	
-	CredentialsDto toCredentialsDto(Credentials credentials);
+	CredentialsDto toCredentialsDto(CredentialsEmbeddable credentialsEmbeddable);
 	
 }
